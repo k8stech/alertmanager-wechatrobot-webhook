@@ -5,7 +5,8 @@ Convert alertmanger webhook messages to qiye WeChat robots that can receive mess
 ```
 ./bin/alertmanager-wechatbot-webhook  --RobotKey="xxxxxx-xxxxx-xxxxx-xxxxxx-xxxxxxx"
 ```
-或
+or
+
 ```
 go run alertmanager-wechatbot-webhook.go  --RobotKey="xxxxxx-xxxxx-xxxxx-xxxxxx-xxxxxxx"
 ```
@@ -18,7 +19,7 @@ receivers:
   webhook_configs:                                                                                                             
   - url: 'http://127.0.0.1:8999/webhook?key=xxxxxx-xxxxx-xxxxx-xxxxxx-xxxxxxx'
 ```
-或者在prometheus rules文件中指定微信机器人
+prometheus rules configure
 ```
 groups:
 - name: ansible managed alert rules
