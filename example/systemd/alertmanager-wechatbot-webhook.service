@@ -1,0 +1,15 @@
+[Unit]
+Description=Alertmanager webhook service
+After=network.target
+
+[Service]
+Type=simple
+
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStart=/usr/local/bin/alertmanager-wechatbot-webhook --RobotKey=xxxxxx-xxxxx-xxxxx-xxxxxx-xxxxxxx
+SuccessExitStatus=143
+TimeoutStopSec=1
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
