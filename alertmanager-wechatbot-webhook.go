@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"net/http"
-
 	"github.com/gin-gonic/gin"
 	"prometheus-to-webhook/model"
 	"prometheus-to-webhook/notifier"
