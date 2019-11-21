@@ -5,6 +5,7 @@ Convert alertmanger webhook messages to qiye WeChat robots that can receive mess
 ```
 rm -rf go.sum go.mod
 go mod init prometheus-to-webhook
+go build alertmanager-wechatbot-webhook.go
 ```
 
 ## How use
