@@ -9,5 +9,5 @@ type WeChatMarkdown struct {
 }
 
 type Markdown struct {
-	Content  string  `json:"content"`
+	Content string `json:"content"`
 }
