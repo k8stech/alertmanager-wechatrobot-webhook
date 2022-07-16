@@ -1,6 +1,6 @@
 
 bin/wechat-webhook:
-	go build -o bin/wechat-webhook
+	GOOS=linux GOARCH=amd64 go build -ldflags "-w" -o bin/wechat-webhook
 
 # make tke version=wechat-webhook
 tke: bin/wechat-webhook
