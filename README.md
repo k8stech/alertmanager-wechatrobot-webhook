@@ -1,25 +1,32 @@
 # alertmanager-wechatrobot-webhook
+
 Convert alertmanger webhook messages to qiye WeChat robots that can receive messages
 
 ## How use
+
 ```
 ./bin/alertmanager-wechatbot-webhook  --RobotKey="xxxxxx-xxxxx-xxxxx-xxxxxx-xxxxxxx"
 ```
+
 or
 
 ```
 go run alertmanager-wechatbot-webhook.go  --RobotKey="xxxxxx-xxxxx-xxxxx-xxxxxx-xxxxxxx"
 ```
+
 ## configure
 
-alertmanager.yml 
+alertmanager.yml
+
 ```
 receivers:
 - name: webhook-test                                                                                                           
   webhook_configs:                                                                                                             
   - url: 'http://127.0.0.1:8999/webhook?key=xxxxxx-xxxxx-xxxxx-xxxxxx-xxxxxxx'
 ```
+
 prometheus rules configure
+
 ```
 groups:
 - name: ansible managed alert rules
@@ -41,6 +48,7 @@ groups:
 ## test
 
 ### 1、使用默认微信机器人发送消息
+
 ```
 curl 'http://127.0.0.1:8999/webhook'  -H 'Content-Type: application/json'    -d '
   {
@@ -82,6 +90,7 @@ curl 'http://127.0.0.1:8999/webhook'  -H 'Content-Type: application/json'    -d 
 ```
 
 ### 2、使用指定微信机器人发送消息
+
 ```
 curl 'http://127.0.0.1:8999/webhook?key=xxxxxx-xxxxx-xxxxx-xxxxxx-xxxxxxx'  -H 'Content-Type: application/json'    -d '
   {
@@ -123,6 +132,7 @@ curl 'http://127.0.0.1:8999/webhook?key=xxxxxx-xxxxx-xxxxx-xxxxxx-xxxxxxx'  -H '
 ```
 
 ### 3、使用alert内容指定微信机器人发送消息
+
 ```
   curl 'http://127.0.0.1:8999/webhook'  -H 'Content-Type: application/json'    -d '
   {

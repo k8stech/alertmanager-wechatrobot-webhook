@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"fmt"
 
-	"prometheus-to-webhook/model"
+	"github.com/k8stech/alertmanager-wechatrobot-webhook/model"
 )
 
 // TransformToMarkdown transform alertmanager notification to wechat markdow message
@@ -35,7 +35,7 @@ func TransformToMarkdown(notification model.Notification) (markdown *model.WeCha
 	markdown = &model.WeChatMarkdown{
 		MsgType: "markdown",
 		Markdown: &model.Markdown{
-			Content:  buffer.String(),
+			Content: buffer.String(),
 		},
 	}
 
