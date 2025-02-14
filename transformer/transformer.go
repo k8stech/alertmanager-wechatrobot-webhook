@@ -16,7 +16,7 @@ func TransformToMarkdown(notification model.Notification) (markdown *model.WeCha
 	robotURL = annotations["wechatRobot"]
 
 	var buffer bytes.Buffer
-
+        var cstZone = time.FixedZone("CST", 8*3600)
 	buffer.WriteString(fmt.Sprintf("### 当前状态:%s \n", status))
 	// buffer.WriteString(fmt.Sprintf("#### 告警项:\n"))
 
@@ -29,7 +29,8 @@ func TransformToMarkdown(notification model.Notification) (markdown *model.WeCha
 		annotations := alert.Annotations
 		buffer.WriteString(fmt.Sprintf("\n>告警主题: %s\n", annotations["summary"]))
 		buffer.WriteString(fmt.Sprintf("\n>告警详情: %s\n", annotations["description"]))
-		buffer.WriteString(fmt.Sprintf("\n> 触发时间: %s\n", alert.StartsAt.Format("2006-01-02 15:04:05")))
+		# buffer.WriteString(fmt.Sprintf("\n> 触发时间: %s\n", alert.StartsAt.Format("2006-01-02 15:04:05")))
+		buffer.WriteString(fmt.Sprintf("\n> 触发时间: %s\n", alert.StartsAt.In(cstZone).Format("2006-01-02 15:04:05")))
 	}
 
 	markdown = &model.WeChatMarkdown{
